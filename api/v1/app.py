@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Flask application module'''
+"""Flask application to connect to API"""
 
 
 from flask import Flask, make_response, jsonify
@@ -16,14 +16,14 @@ cors = CORS(app, resources={r'/*': {'origins': '0.0.0.0'}})
 
 @app.teardown_appcontext
 def teardown(exception):
-    '''what should happen when the app is getting teared down'''
+    """teardown context"""
     if storage is not None:
         storage.close()
 
 
 @app.errorhandler(404)
 def errorhandler(error):
-    '''404 error handler'''
+    """404 error handler"""
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 
